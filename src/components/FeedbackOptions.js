@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export function FeedbackOptions({ options, onLeaveFeedback }) {
+export function FeedbackOptions({ onLeaveFeedback }) {
   return (
     <div>
       <button type="button" onClick={onLeaveFeedback.handleGood}>
@@ -16,3 +16,7 @@ export function FeedbackOptions({ options, onLeaveFeedback }) {
     </div>
   );
 }
+
+FeedbackOptions.propTypes = {
+  onLeaveFeedback: PropTypes.object,
+};

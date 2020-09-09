@@ -1,5 +1,4 @@
-import React, { Fragment, Component } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from "react";
 import { Statistics } from "./Statistics";
 import { FeedbackOptions } from "./FeedbackOptions";
 import { SectionTitle } from "./SectionTitle";
@@ -58,11 +57,6 @@ export class App extends Component {
       <>
         <SectionTitle title={"Please leave feedback"}>
           <FeedbackOptions
-            options={{
-              countTotalFeedback: this.countTotalFeedback,
-              countPositiveFeedbackPercentage: this
-                .countPositiveFeedbackPercentage,
-            }}
             onLeaveFeedback={{
               handleGood: this.handleGood,
               handleNeutral: this.handleNeutral,
@@ -78,7 +72,6 @@ export class App extends Component {
               bad={this.state.bad}
               total={this.state.total}
               positivePercentage={this.state.percentage}
-              step={1}
             />
           ) : (
             <Notification message="No feedback given" />
