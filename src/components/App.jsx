@@ -10,28 +10,34 @@ function App() {
     bad: 0,
   });
 
-  function handleClick(e) {
-    const btnDataKeys = Object.keys(e.target.dataset);
-    const feedbackName = new String(...btnDataKeys);
+  function updateFeedback(feedbackType) {
     const updFeedback = {
       ...feedback,
-      [feedbackName]: feedback[feedbackName] + 1,
+      [feedbackType]: feedback[feedbackType] + 1,
     };
     setFeedback(updFeedback);
-    // console.log(btnDataKeys);
-    // console.log(feedbackName);
-    // console.log(feedback[feedbackName]);
+    // console.log(feedback[feedbackType]);
     // console.log(updFeedback);
+  }
+
+  function calcTotalFeedback({ good, bad, neutral }) {
+    return good + bad + neutral;
+  }
+
+  function calcPositiveFeedback(fbData) {
+    return Math.round((fbData.good / calcTotalFeedback(fbData)) * 100);
   }
 
   return (
     <>
       <Description />
-      <Options onUpdate={handleClick} />
+      <Options onUpdate={updateFeedback} />
       <Feedback
         good={feedback.good}
         neutral={feedback.neutral}
         bad={feedback.bad}
+        totalFeedback={calcTotalFeedback(feedback)}
+        positiveFeedback={calcPositiveFeedback(feedback)}
       />
     </>
   );
