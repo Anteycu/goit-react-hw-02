@@ -1,12 +1,18 @@
 // import css from "./Description.module.css";
 
-const Options = () => {
+const Options = ({ onUpdate }) => {
   return (
     <div>
-      <button type="button">Good</button>
-      <button type="button">Neutral</button>
-      <button type="button">Bad</button>
-      <button type="reset">Reset</button>
+      <button type="button" data-good onClick={onUpdate}>
+        Good
+      </button>
+      <button type="button" data-neutral onClick={onUpdate}>
+        Neutral
+      </button>
+      <button type="button" data-bad onClick={onUpdate}>
+        Bad
+      </button>
+      {/* <button type="reset">Reset</button> */}
     </div>
   );
 };
