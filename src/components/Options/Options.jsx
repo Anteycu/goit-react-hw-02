@@ -1,10 +1,10 @@
 // import css from "./Description.module.css";
 
-const Options = ({ onUpdate }) => {
+const Options = ({ onUpdate, totalFeedback }) => {
   const getFeedbackType = (e) => {
     const btnDataKeys = Object.keys(e.target.dataset);
     // console.log(btnDataKeys);
-    onUpdate(new String(...btnDataKeys));
+    onUpdate(...btnDataKeys);
   };
 
   return (
@@ -18,7 +18,11 @@ const Options = ({ onUpdate }) => {
       <button type="button" data-bad onClick={getFeedbackType}>
         Bad
       </button>
-      {/* <button type="reset">Reset</button> */}
+      {totalFeedback > 0 && (
+        <button type="button" data-reset onClick={getFeedbackType}>
+          Reset
+        </button>
+      )}
     </div>
   );
 };
