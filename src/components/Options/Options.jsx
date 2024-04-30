@@ -1,14 +1,13 @@
-// import css from "./Description.module.css";
+import css from "./Options.module.css";
 
 const Options = ({ onUpdate, totalFeedback }) => {
   const getFeedbackType = (e) => {
     const btnDataKeys = Object.keys(e.target.dataset);
-    // console.log(btnDataKeys);
     onUpdate(...btnDataKeys);
   };
 
   return (
-    <div>
+    <div className={css.options}>
       <button type="button" data-good onClick={getFeedbackType}>
         Good
       </button>
